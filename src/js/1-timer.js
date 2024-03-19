@@ -35,7 +35,6 @@ const options = {
       });
       } else {
           btnStart.disabled = false;
-          input.disabled = true;
       }
   },
 };
@@ -67,13 +66,13 @@ console.log(convertMs(24140000)); // {days: 0, hours: 6 minutes: 42, seconds: 20
 
 btnStart.addEventListener("click", event => {
     const intervalId = setInterval(() => {
-        event.preventDefault();
         timeInterval = userSelectedDate - new Date();
         input.disabled = true;
+        btnStart.disabled = true;
 
         if (timeInterval < 0) {
-            btnStart.disabled = false;
-            input.disabled = true;
+            btnStart.disabled = true;
+            input.disabled = false;
             clearInterval(intervalId);
             return;
         };
